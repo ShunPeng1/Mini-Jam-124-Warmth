@@ -12,6 +12,17 @@ public enum DigitalBarType
     Horizontal,
     Vertical
 }
+
+public enum OperatorType
+{
+    Assignment,
+    Addition,
+    Subtraction,
+    Multiplication,
+    Division    
+}
+
+
 public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
 {
     
@@ -211,8 +222,40 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
     
     #endregion
 
+
+    #region Collectible
+
+    public void OnOperationCalculation(OperatorType operatorType, int value)
+    {
+        switch (operatorType)
+        {
+            case OperatorType.Assignment:
+                currentScore = value;
+                break;
+            
+            case OperatorType.Addition:
+                currentScore += value;
+                break;
+            
+            case OperatorType.Subtraction:
+                currentScore -= value;
+                break;
+            case OperatorType.Multiplication:
+                currentScore *= value;
+                break;
+            case OperatorType.Division:
+                currentScore /= value;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(operatorType), operatorType, null);
+        }
+
+        currentScore = (currentScore + 10) % 10;
+        UpdateTextGUI();
+    }
     
 
+    #endregion
 
 
 }

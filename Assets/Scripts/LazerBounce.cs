@@ -57,23 +57,28 @@ public class LazerBounce : MonoBehaviour
                 }
 
                 _lastHitObject = hit.transform.gameObject;
-                    
-                position = hit.point;
-                direction = Vector3.Reflect(direction, hit.normal);
-                _laser.SetPosition(_count, hit.point);
                 
                 if (hit.transform.CompareTag("Mirror")) 
                 {
+                    position = hit.point;
+                    direction = Vector3.Reflect(direction, hit.normal);
                     _laser.SetPosition(_count, hit.point);
+                }
+
+                if (hit.transform.CompareTag("OperatorCollectible"))
+                {
+                    hit.transform.gameObject.GetComponent<ScoreOperator>().SendCalculation();
                 }
                 else
                 {
-                    for (int j = (i + 1); j < maxBounce; j++)
+                    for (int j = i+1; j < maxBounce; j++)
                     {
                         _laser.SetPosition(j, hit.point);
 
                     }
                 }
+                
+                
                 
                 goto SuccessfullyHit;
                 
