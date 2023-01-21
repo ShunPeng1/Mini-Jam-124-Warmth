@@ -25,19 +25,19 @@ public class ScoreOperator : MonoBehaviour
         switch (operatorType)
         {
             case OperatorType.Assignment:
-                return "= ";
+                return "=";
                 break;
             case OperatorType.Addition:
-                return "+ ";
+                return "+";
                 break;
             case OperatorType.Subtraction:
-                return "- ";
+                return "-";
                 break;
             case OperatorType.Multiplication:
-                return "* ";
+                return "*";
                 break;
             case OperatorType.Division:
-                return "/ ";
+                return "/";
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
