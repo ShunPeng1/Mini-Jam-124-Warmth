@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,7 +9,7 @@ public class DigitalBarItemSlot : MonoBehaviour
 {
 
     [SerializeField] private DigitalBarType digitalBarType;
-
+    
     [SerializeField, HideInInspector] private GameObject spawnedGameObject = null;
 
     
@@ -22,7 +23,7 @@ public class DigitalBarItemSlot : MonoBehaviour
         if (spawnedGameObject != null)
         {
             spawnedGameObject.GetComponent<DigitalBar>().SpawnInit();
-
+            
         }
         else
         {

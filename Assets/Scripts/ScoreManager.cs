@@ -24,6 +24,13 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
     [SerializeField] private TextMeshProUGUI exchangeSlot1Text;
     [SerializeField] private TextMeshProUGUI exchangeSlot2Text;
     
+    [SerializeField] private TextMeshProUGUI numberOfHorizontalBarText;
+    [SerializeField] private TextMeshProUGUI numberOfVerticalBarText;
+
+    
+    [SerializeField] private TextMeshProUGUI deltaHorizontalBarText;
+    [SerializeField] private TextMeshProUGUI deltaVerticalBarText;
+
     
 
     [Header("Bars")] 
@@ -49,6 +56,11 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
             _dictionaryBarItems.Add(digitalBarItem.barType, digitalBarItem);
             
         }
+
+        NumberNode node = numberGraph[currentScore];
+        currentScore = node.number;
+        exchangeSlot1Score = node.exchangeNumber1;
+        exchangeSlot2Score = node.exchangeNumber2;
         
         UpdateTextGUI();
         
@@ -74,6 +86,8 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
         barItem.numberOfItem+= value;
     }
 
+ 
+    
 
     #region NumberGraph
 
@@ -100,9 +114,12 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
         currentScoreText.text = currentScore.ToString();
         exchangeSlot1Text.text = exchangeSlot1Score.ToString();
         exchangeSlot2Text.text = exchangeSlot2Score.ToString();
+
+        numberOfHorizontalBarText.text = _dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem.ToString();
+        numberOfVerticalBarText.text = _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem.ToString();
     }
 
-    private void OnChoosingExchangeSlot(int slotNumber)
+    public void OnChoosingExchangeSlot(int slotNumber)
     {
         switch (slotNumber)
         {
@@ -112,6 +129,30 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
             
             case 2:
                 ExchangeNumber(numberGraph[ exchangeSlot2Score ]);
+                break;
+                
+            default:
+                break;
+        }
+        
+        UpdateTextGUI();
+    }
+
+    public int OnEnterExchangeSlot(int slotNumber)
+    {
+        switch (slotNumber)
+        {
+            case 1:
+                
+                NumberNode oldNumberNode = numberGraph[currentScore], newNumberNode =  numberGraph[ exchangeSlot1Score ];
+
+                int deltaNumberOfHorizontalBar =  - newNumberNode.horizontalBar + oldNumberNode.horizontalBar;
+                int deltaNumberOfVerticalBar =  -  newNumberNode.verticalBar + oldNumberNode.verticalBar;
+
+                break;
+            
+            case 2:
+                
                 break;
                 
             default:
