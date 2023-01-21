@@ -70,7 +70,7 @@ public class DigitalBar : MonoBehaviour
         if (_collider2D.IsTouchingLayers(touchingLayer))
         {
             Destroy(gameObject);
-            ScoreManager.Instance.IncreaseBarNumber(barType, -1);
+            ScoreManager.Instance.IncreaseBarNumber(barType, 1);
         }
         else
         {

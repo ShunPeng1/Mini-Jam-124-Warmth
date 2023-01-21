@@ -12,17 +12,23 @@ public class ExchangeSlot : MonoBehaviour
     
     private void OnMouseDown()
     {
-        ScoreManager.Instance.OnChoosingExchangeSlot(slotID);
+        if (ScoreManager.Instance.OnChoosingExchangeSlot(slotID))
+        {
+            OnMouseEnter();
+        }
+        else
+        {
+            Debug.Log("Not affordable");
+        }
     }
     
     private void OnMouseEnter()
     {
-        
+        ScoreManager.Instance.OnEnterExchangeSlot(slotID);
     }
 
     private void OnMouseExit()
     {
-        
-        
+        ScoreManager.Instance.OnExitExchangeSlot();
     }
 }

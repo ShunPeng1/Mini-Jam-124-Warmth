@@ -28,8 +28,8 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
     [SerializeField] private TextMeshProUGUI numberOfVerticalBarText;
 
     
-    [SerializeField] private TextMeshProUGUI deltaHorizontalBarText;
-    [SerializeField] private TextMeshProUGUI deltaVerticalBarText;
+    //[SerializeField] private TextMeshProUGUI deltaHorizontalBarText;
+    //[SerializeField] private TextMeshProUGUI deltaVerticalBarText;
 
     
 
@@ -76,7 +76,9 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
         barItem.numberOfItem--;
         GameObject instantiate = Instantiate(barItem.prefab, position, Quaternion.identity);
         
+        UpdateTextGUI();
         return instantiate;
+        
     }
     
     public void IncreaseBarNumber(DigitalBarType barType, int value)
@@ -84,10 +86,20 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
         DigitalBarItem barItem = _dictionaryBarItems[barType];
 
         barItem.numberOfItem+= value;
+        UpdateTextGUI();
     }
 
  
-    
+    private void UpdateTextGUI()
+    {
+        currentScoreText.text = currentScore.ToString();
+        exchangeSlot1Text.text = exchangeSlot1Score.ToString();
+        exchangeSlot2Text.text = exchangeSlot2Score.ToString();
+
+        numberOfHorizontalBarText.text = _dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem.ToString();
+        numberOfVerticalBarText.text = _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem.ToString();
+    }
+
 
     #region NumberGraph
 
@@ -109,57 +121,69 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
     [SerializeField] private List<NumberNode> numberGraph;
 
     
-    private void UpdateTextGUI()
+   
+    public bool OnChoosingExchangeSlot(int slotNumber)
     {
-        currentScoreText.text = currentScore.ToString();
-        exchangeSlot1Text.text = exchangeSlot1Score.ToString();
-        exchangeSlot2Text.text = exchangeSlot2Score.ToString();
+        bool isAffordable = false;
+        switch (slotNumber)
+        {
+            case 1:
+                isAffordable = ExchangeNumber(numberGraph[ exchangeSlot1Score ]);
+                break;
+            
+            case 2:
+                isAffordable = ExchangeNumber(numberGraph[ exchangeSlot2Score ]);
+                break;
+                
+            default:
+                break;
+        }
+        
+        UpdateTextGUI();
+        return isAffordable;
+    }
 
+    public void OnEnterExchangeSlot(int slotNumber)
+    {
+        
+        int deltaNumberOfHorizontalBar = 0, deltaNumberOfVerticalBar = 0;
+        NumberNode oldNumberNode;
+        NumberNode newNumberNode;
+        switch (slotNumber)
+        {
+            case 1:
+                oldNumberNode = numberGraph[currentScore];
+                newNumberNode = numberGraph[ exchangeSlot1Score ];
+
+                deltaNumberOfHorizontalBar =  - newNumberNode.horizontalBar + oldNumberNode.horizontalBar;
+                deltaNumberOfVerticalBar =  -  newNumberNode.verticalBar + oldNumberNode.verticalBar;
+
+                break;
+            
+            case 2:
+                
+                oldNumberNode = numberGraph[currentScore];
+                newNumberNode = numberGraph[ exchangeSlot2Score ];
+
+                deltaNumberOfHorizontalBar =  - newNumberNode.horizontalBar + oldNumberNode.horizontalBar;
+                deltaNumberOfVerticalBar =  -  newNumberNode.verticalBar + oldNumberNode.verticalBar;
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+        numberOfHorizontalBarText.text = _dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem.ToString() + (deltaNumberOfHorizontalBar > 0 ? "+" + deltaNumberOfHorizontalBar.ToString() : ( deltaNumberOfHorizontalBar < 0 ?   deltaNumberOfHorizontalBar.ToString(): String.Empty ));
+        numberOfVerticalBarText.text = _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem.ToString() + (deltaNumberOfVerticalBar > 0 ? "+" + deltaNumberOfVerticalBar.ToString() : ( deltaNumberOfVerticalBar < 0 ?  deltaNumberOfVerticalBar.ToString(): String.Empty ));
+
+    }
+    
+    public void OnExitExchangeSlot()
+    {
         numberOfHorizontalBarText.text = _dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem.ToString();
         numberOfVerticalBarText.text = _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem.ToString();
-    }
 
-    public void OnChoosingExchangeSlot(int slotNumber)
-    {
-        switch (slotNumber)
-        {
-            case 1:
-                ExchangeNumber(numberGraph[ exchangeSlot1Score ]);
-                break;
-            
-            case 2:
-                ExchangeNumber(numberGraph[ exchangeSlot2Score ]);
-                break;
-                
-            default:
-                break;
-        }
-        
-        UpdateTextGUI();
-    }
-
-    public int OnEnterExchangeSlot(int slotNumber)
-    {
-        switch (slotNumber)
-        {
-            case 1:
-                
-                NumberNode oldNumberNode = numberGraph[currentScore], newNumberNode =  numberGraph[ exchangeSlot1Score ];
-
-                int deltaNumberOfHorizontalBar =  - newNumberNode.horizontalBar + oldNumberNode.horizontalBar;
-                int deltaNumberOfVerticalBar =  -  newNumberNode.verticalBar + oldNumberNode.verticalBar;
-
-                break;
-            
-            case 2:
-                
-                break;
-                
-            default:
-                break;
-        }
-        
-        UpdateTextGUI();
     }
 
 
