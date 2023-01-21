@@ -21,20 +21,5 @@ class GridCellType
 
 public class AssetManager : MonoBehaviour
 {
-    public static AssetManager Instance;
-
-    void Start()
-    {
-        Instance = this;
-        
-        
-    }
-
-    [SerializeField] private List<GridCellType> gridCellTypesPrefabs;
-    private Dictionary<CellType, GameObject> _dictionaryGridCellTypePrefabs;
-
-    
-
-
 
 }

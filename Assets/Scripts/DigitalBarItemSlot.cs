@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DigitalBarItemButton : MonoBehaviour
+public class DigitalBarItemSlot : MonoBehaviour
 {
 
     [SerializeField] private DigitalBarType digitalBarType;
@@ -15,8 +15,7 @@ public class DigitalBarItemButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Down");
-
+        
         if (spawnedGameObject != null) return;
         
         spawnedGameObject = ScoreManager.Instance.SpawnBar(digitalBarType, transform.position);
@@ -34,7 +33,6 @@ public class DigitalBarItemButton : MonoBehaviour
 
     private void OnMouseUp()
     {
-        Debug.Log("Up");
         spawnedGameObject.GetComponent<DigitalBar>().DropSpawned();
         spawnedGameObject = null;
     }
