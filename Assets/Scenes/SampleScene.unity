@@ -1292,6 +1292,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6213082191319735133, guid: 721533109742f934ab5d2267a856005d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6213082191324516016, guid: 721533109742f934ab5d2267a856005d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000000059604645
@@ -11908,7 +11912,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2124321591964507236, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
       propertyPath: collideLayerMask.m_Bits
-      value: 151
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2124321591964507237, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
       propertyPath: m_RootOrder
@@ -11916,11 +11920,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2124321591964507237, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.29
       objectReference: {fileID: 0}
     - target: {fileID: 2124321591964507237, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 2124321591964507237, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
       propertyPath: m_LocalPosition.z

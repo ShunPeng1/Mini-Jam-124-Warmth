@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6652797452042460108}
   - component: {fileID: 8159600266090772022}
   - component: {fileID: 3382594961571780891}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ScoreOperator
   m_TagString: OperatorCollectible
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8332126455883816431}
   - component: {fileID: 9201877215238099130}
   - component: {fileID: 2854908362748552382}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 8818558956925326784}
   - component: {fileID: 3813674862591711338}
   - component: {fileID: 400119015647405819}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}

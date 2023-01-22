@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DigitalBar : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody2D;
-    private Collider2D _collider2D;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private Collider2D _collider2D;
     
     
     private bool _isDragging = false;
@@ -19,6 +19,8 @@ public class DigitalBar : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        
+        
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class DigitalBar : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //Debug.Log("Mouse Down");
         _isDragging = true;
         lastPosition = transform.position;
     }
@@ -44,6 +47,8 @@ public class DigitalBar : MonoBehaviour
     
     private void OnMouseUp()
     {
+        
+        //Debug.Log("Mouse Up");
         if (_isDragging == false) return;
         
         _isDragging = false;
