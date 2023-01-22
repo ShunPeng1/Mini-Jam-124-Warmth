@@ -27,6 +27,8 @@ public class LazerBounce : MonoBehaviour
     private void Update()
     {
         _count = 0;
+        transform.rotation = Quaternion.Euler(0,0,originalRotationDegree );
+        
         CastLaser(transform.position + positionOffset, new Vector3( Mathf.Cos(originalRotationDegree*Mathf.Deg2Rad),Mathf.Sin(originalRotationDegree*Mathf.Deg2Rad) ,0));
         
     }

@@ -42,8 +42,10 @@ public class DigitalBar : MonoBehaviour
     }
     
     
-    private void OnMouseUpAsButton() 
+    private void OnMouseUp()
     {
+        if (_isDragging == false) return;
+        
         _isDragging = false;
 
         if (_collider2D.IsTouchingLayers(touchingLayer))

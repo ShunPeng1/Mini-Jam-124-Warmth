@@ -34,6 +34,7 @@ public class DigitalBarItemSlot : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (spawnedGameObject == null) return;
         spawnedGameObject.GetComponent<DigitalBar>().DropSpawned();
         spawnedGameObject = null;
     }
