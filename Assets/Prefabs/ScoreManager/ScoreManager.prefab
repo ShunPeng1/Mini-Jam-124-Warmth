@@ -862,10 +862,10 @@ MonoBehaviour:
   listBarItem:
   - barType: 1
     numberOfItem: 1
-    prefab: {fileID: 6458780936400168568, guid: fb471c052c53a7d4480bff774c4a8d02, type: 3}
+    prefab: {fileID: 6458780936400168568, guid: 2229578b61be332459af81e5668f4db0, type: 3}
   - barType: 0
     numberOfItem: 1
-    prefab: {fileID: 6458780936400168568, guid: 321d115861396bc43ab57cf2fa8a631e, type: 3}
+    prefab: {fileID: 6458780936400168568, guid: c7f7008a1c4260243a833728fb8bbde4, type: 3}
   numberGraph:
   - number: 0
     horizontalBar: 2
