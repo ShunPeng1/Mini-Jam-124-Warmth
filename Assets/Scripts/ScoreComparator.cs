@@ -17,10 +17,13 @@ public class ScoreComparator : MonoBehaviour
     [SerializeField] private bool isOneTimeActiveNorAlwaysActive = true;
     [SerializeField] private bool isEnable = true;
     [SerializeField] private bool isPassable = false;
+
+    [SerializeField] private Sprite litSprite;
+    [SerializeField] private Sprite unlitSprite;
     
     void Start()
     {
-        
+        gameObject.GetComponent<SpriteRenderer>().sprite = unlitSprite;
         if(comparatorType != ComparatorType.Null)
             operatorText.text = OperationDecode() + value.ToString();
     }
@@ -49,11 +52,17 @@ public class ScoreComparator : MonoBehaviour
     public void SendComparison(out bool isPassableOut)
     {
         isPassableOut = isPassable;
-        
-        if (!ScoreManager.Instance.OnComparatorCalculation(comparatorType, value) || onTrueEvent == null ||
-            !isEnable) return;
+
+        if (!isEnable) return;
+        if (!ScoreManager.Instance.OnComparatorCalculation(comparatorType, value) || onTrueEvent == null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = unlitSprite;
+            return;
+        }
         
         if (isOneTimeActiveNorAlwaysActive) isEnable = false;
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = litSprite;
         onTrueEvent.Invoke();
         
         

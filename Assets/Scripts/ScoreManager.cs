@@ -35,11 +35,13 @@ public enum ComparatorType
 public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 {
     
-    [Header("Score and Text")]
+    [Header("Score and value")]
     [SerializeField] private int currentScore;
-
     [SerializeField] private int exchangeSlot1Score, exchangeSlot2Score;
+    [SerializeField] private int exchangeTurnLeft = 0;
     
+    
+    [Header("Text GameObject")]
     [SerializeField] private TextMeshProUGUI currentScoreText;
     [SerializeField] private TextMeshProUGUI exchangeSlot1Text;
     [SerializeField] private TextMeshProUGUI exchangeSlot2Text;
@@ -47,9 +49,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     [SerializeField] private TextMeshProUGUI numberOfHorizontalBarText;
     [SerializeField] private TextMeshProUGUI numberOfVerticalBarText;
 
-    
-    //[SerializeField] private TextMeshProUGUI deltaHorizontalBarText;
-    //[SerializeField] private TextMeshProUGUI deltaVerticalBarText;
+    [SerializeField] private TextMeshProUGUI exchangeTurnLeftText;
 
     
 
@@ -108,6 +108,12 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         barItem.numberOfItem+= value;
         UpdateTextGUI();
     }
+    
+    public void IncreaseExchangeLeftNumber(int value)
+    {
+        exchangeTurnLeft += value;
+        UpdateTextGUI();
+    }
 
  
     private void UpdateTextGUI()
@@ -118,6 +124,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
         numberOfHorizontalBarText.text = _dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem.ToString();
         numberOfVerticalBarText.text = _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem.ToString();
+        exchangeTurnLeftText.text = exchangeTurnLeft.ToString() + " LEFT";
     }
 
 
@@ -214,7 +221,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         int newNumberOfHorizontalBar = _dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem - newNumberNode.horizontalBar + oldNumberNode.horizontalBar;
         int newNumberOfVerticalBar =  _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem -  newNumberNode.verticalBar + oldNumberNode.verticalBar;
 
-        if (newNumberOfHorizontalBar < 0 || newNumberOfVerticalBar < 0)
+        if (exchangeTurnLeft <= 0 || newNumberOfHorizontalBar < 0 || newNumberOfVerticalBar < 0)
         {
             return false;
         }
@@ -225,7 +232,8 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         currentScore = newNumberNode.number;
         exchangeSlot1Score = newNumberNode.exchangeNumber1;
         exchangeSlot2Score = newNumberNode.exchangeNumber2;
-
+        exchangeTurnLeft--;
+        
         return true;
     }
     
