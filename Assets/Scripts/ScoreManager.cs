@@ -22,8 +22,17 @@ public enum OperatorType
     Division    
 }
 
+public enum ComparatorType
+{
+    Null,
+    LessThan,
+    MoreThan,
+    Equal,
+}
 
-public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
+
+
+public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 {
     
     [Header("Score and Text")]
@@ -58,7 +67,7 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
         
     }
 
-    protected override void OnPersistentSingletonAwake()
+    protected void Start()
     {
         
         _dictionaryBarItems = new Dictionary<DigitalBarType, DigitalBarItem>();
@@ -257,5 +266,38 @@ public class ScoreManager : PersistentSingletonMonoBehaviour<ScoreManager>
 
     #endregion
 
+    #region Collectible
 
+    public bool OnComparatorCalculation(ComparatorType comparatorType, int value)
+    {
+        switch (comparatorType)
+        {
+            case ComparatorType.Null:
+                return true;
+                break;
+            
+            case ComparatorType.LessThan:
+                return (_dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem + _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem ) < value;
+                break;
+            
+            case ComparatorType.MoreThan:
+                return (_dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem + _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem ) > value;
+                break;
+
+            case ComparatorType.Equal:
+                return (_dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem + _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem ) == value;
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(comparatorType), comparatorType, null);
+        }
+
+        
+    }
+    
+
+    #endregion
+
+    
+    
 }

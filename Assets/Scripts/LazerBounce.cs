@@ -64,8 +64,7 @@ public class LazerBounce : MonoBehaviour
                     direction = Vector3.Reflect(direction, hit.normal);
                     _laser.SetPosition(_count, hit.point);
                 }
-
-                if (hit.transform.CompareTag("OperatorCollectible"))
+                else if (hit.transform.CompareTag("OperatorCollectible"))
                 {
                     hit.transform.gameObject.GetComponent<ScoreOperator>().SendCalculation();
                 }
@@ -74,8 +73,9 @@ public class LazerBounce : MonoBehaviour
                     for (int j = i+1; j < maxBounce; j++)
                     {
                         _laser.SetPosition(j, hit.point);
-
+                        
                     }
+                    return;
                 }
                 
                 
