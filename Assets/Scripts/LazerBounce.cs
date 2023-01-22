@@ -63,32 +63,48 @@ public class LazerBounce : MonoBehaviour
                     position = hit.point;
                     direction = Vector3.Reflect(direction, hit.normal);
                     _laser.SetPosition(_count, hit.point);
+                    goto SuccessfullyHit;
+                    
                 }
-                else if (hit.transform.CompareTag("OperatorCollectible"))
+                
+                if (hit.transform.CompareTag("OperatorCollectible"))
                 {
                     hit.transform.gameObject.GetComponent<ScoreOperator>().SendCalculation();
+
+                    position = hit.point;
+                    _laser.SetPosition(_count, hit.point);
+                    
+                    goto SuccessfullyHit;
                 }
-                else
+                
+                if (hit.transform.CompareTag("Comparator"))
                 {
-                    for (int j = i+1; j < maxBounce; j++)
+                    hit.transform.gameObject.GetComponent<ScoreComparator>().SendComparison(out bool isPassableOut);
+                    
+                    if (isPassableOut)
                     {
-                        _laser.SetPosition(j, hit.point);
-                        
+                        position = hit.point;
+                        _laser.SetPosition(_count, hit.point);
+                        continue;
                     }
-                    return;
                 }
                 
+                for (int j = i+1; j < maxBounce; j++)
+                {
+                    _laser.SetPosition(j, hit.point);
+                        
+                }
+                return;
                 
-                
-                goto SuccessfullyHit;
                 
             }
-
-
+            
             _laser.SetPosition( _count, ray.GetPoint(300));
+            continue;
 
             SuccessfullyHit: ;
-
+        
+            
         }
       
     }

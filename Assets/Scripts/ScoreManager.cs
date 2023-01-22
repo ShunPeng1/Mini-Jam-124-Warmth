@@ -274,19 +274,19 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         {
             case ComparatorType.Null:
                 return true;
-                break;
+                
             
             case ComparatorType.LessThan:
                 return (_dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem + _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem ) < value;
-                break;
+                
             
             case ComparatorType.MoreThan:
                 return (_dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem + _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem ) > value;
-                break;
+                
 
             case ComparatorType.Equal:
                 return (_dictionaryBarItems[DigitalBarType.Horizontal].numberOfItem + _dictionaryBarItems[DigitalBarType.Vertical].numberOfItem ) == value;
-                break;
+                
 
             default:
                 throw new ArgumentOutOfRangeException(nameof(comparatorType), comparatorType, null);

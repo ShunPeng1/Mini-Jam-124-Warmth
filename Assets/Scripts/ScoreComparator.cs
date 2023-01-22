@@ -11,12 +11,12 @@ public class ScoreComparator : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI operatorText;
     [SerializeField] private ComparatorType comparatorType;
-    
-    
     [SerializeField] private int value;
     
     [SerializeField] private UnityEvent onTrueEvent;
-    
+    [SerializeField] private bool isOneTimeActiveNorAlwaysActive = true;
+    [SerializeField] private bool isEnable = true;
+    [SerializeField] private bool isPassable = false;
     
     void Start()
     {
@@ -46,10 +46,16 @@ public class ScoreComparator : MonoBehaviour
     }
 
 
-    public void SendCalculation()
+    public void SendComparison(out bool isPassableOut)
     {
-        if( ScoreManager.Instance.OnComparatorCalculation(comparatorType, value) && onTrueEvent != null)
-            onTrueEvent.Invoke();    
-       
+        isPassableOut = isPassable;
+        
+        if (!ScoreManager.Instance.OnComparatorCalculation(comparatorType, value) || onTrueEvent == null ||
+            !isEnable) return;
+        
+        if (isOneTimeActiveNorAlwaysActive) isEnable = false;
+        onTrueEvent.Invoke();
+        
+        
     }
 }
