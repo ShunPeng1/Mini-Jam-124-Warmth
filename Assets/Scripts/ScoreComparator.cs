@@ -61,10 +61,16 @@ public class ScoreComparator : MonoBehaviour
             return;
         }
         //Debug.Log("Light");
-        if (isOneTimeActiveNorAlwaysActive) isEnable = false;
-
+        if (isOneTimeActiveNorAlwaysActive)
+        {
+            isEnable = false;
+            onTrueEvent.Invoke();
+        }
+        else
+        {
+        }
         gameObject.GetComponent<SpriteRenderer>().sprite = litSprite;
-        onTrueEvent.Invoke();
+        
         
         
     }

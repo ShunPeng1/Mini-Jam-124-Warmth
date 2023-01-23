@@ -317,10 +317,17 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
         if (_currentActiveWinningTrigger >= numberOfWinningTrigger)
         {
-            Invoke( nameof(SceneManager.Instance.GetNextScene), 1f);
+            
+            Debug.Log("Wininng");
+            Invoke( nameof(Winning), 1f);
             
         }
-    }    
+    }
+
+    private void Winning()
+    {
+        SceneManager.Instance.GetNextScene();
+    }
 
     #endregion
     
