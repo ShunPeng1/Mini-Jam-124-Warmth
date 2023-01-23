@@ -40,6 +40,9 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     [SerializeField] private int exchangeSlot1Score, exchangeSlot2Score;
     [SerializeField] private int exchangeTurnLeft = 0;
     
+    [Header("Winning Trigger")]
+    [SerializeField] private int numberOfWinningTrigger = 1;
+    private int _currentActiveWinningTrigger = 0 ;
     
     [Header("Text GameObject")]
     [SerializeField] private TextMeshProUGUI currentScoreText;
@@ -306,6 +309,20 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     #endregion
 
+    #region WiningTrigger
+
+    public void IncreaseWinningTrigger(int value)
+    {
+        _currentActiveWinningTrigger += value;
+
+        if (_currentActiveWinningTrigger >= numberOfWinningTrigger)
+        {
+            Invoke( nameof(SceneManager.Instance.GetNextScene), 1f);
+            
+        }
+    }    
+
+    #endregion
     
     
 }

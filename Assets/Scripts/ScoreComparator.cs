@@ -13,6 +13,7 @@ public class ScoreComparator : MonoBehaviour
     [SerializeField] private ComparatorType comparatorType;
     [SerializeField] private int value;
     
+    
     [SerializeField] private UnityEvent onTrueEvent;
     [SerializeField] private bool isOneTimeActiveNorAlwaysActive = true;
     [SerializeField] private bool isEnable = true;
