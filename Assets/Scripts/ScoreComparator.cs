@@ -52,14 +52,14 @@ public class ScoreComparator : MonoBehaviour
     public void SendComparison(out bool isPassableOut)
     {
         isPassableOut = isPassable;
-
+        Debug.Log("Hit");
         if (!isEnable) return;
         if (!ScoreManager.Instance.OnComparatorCalculation(comparatorType, value) || onTrueEvent == null)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = unlitSprite;
             return;
         }
-        
+        Debug.Log("Light");
         if (isOneTimeActiveNorAlwaysActive) isEnable = false;
 
         gameObject.GetComponent<SpriteRenderer>().sprite = litSprite;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4940515390903506101}
   - component: {fileID: 5224798840816048608}
   - component: {fileID: 1202241509086916068}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 7738002501737960086}
   - component: {fileID: 5047740759918542700}
   - component: {fileID: 5088171405063638404}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Comparator
   m_TagString: Comparator
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 5571028509845757082}
   - component: {fileID: 278503388581990704}
   - component: {fileID: 3655821531364945825}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d56a615564304c7419b3752435253288, type: 2}
   m_sharedMaterial: {fileID: 9181762920376573169, guid: d56a615564304c7419b3752435253288, type: 2}
