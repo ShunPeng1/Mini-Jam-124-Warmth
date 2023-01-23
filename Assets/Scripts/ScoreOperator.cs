@@ -34,7 +34,7 @@ public class ScoreOperator : MonoBehaviour
                 return "-";
                 
             case OperatorType.Multiplication:
-                return "*";
+                return "X";
                 
             case OperatorType.Division:
                 return "/";

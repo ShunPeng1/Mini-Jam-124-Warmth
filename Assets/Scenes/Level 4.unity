@@ -242,12 +242,12 @@ PrefabInstance:
     - target: {fileID: 5535482056809311095, guid: 4fe638780afe0bd4a9bb2e852a8c8912, type: 3}
       propertyPath: m_text
       value: "There are 2 exchange slot that you can swap the score to mirror bar.
-        For example : \n8 has 4  and 3 horizontal, 4 vertical\n6 has 4  and 3 horizontal,
-        3 vertical\nExchange will give you 1 vertical"
+        For example : \n\n8 has 3 horizontal & 4 vertical bar\n6 has 3 horizontal
+        & 3 vertical bar\n\nExchange 8 to 6 will give you 1 vertical bar"
       objectReference: {fileID: 0}
     - target: {fileID: 5535482056809311095, guid: 4fe638780afe0bd4a9bb2e852a8c8912, type: 3}
       propertyPath: m_fontSize
-      value: 24.65
+      value: 20.75
       objectReference: {fileID: 0}
     - target: {fileID: 6382027364756331941, guid: 4fe638780afe0bd4a9bb2e852a8c8912, type: 3}
       propertyPath: m_Name
