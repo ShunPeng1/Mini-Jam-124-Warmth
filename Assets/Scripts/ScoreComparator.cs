@@ -64,6 +64,7 @@ public class ScoreComparator : MonoBehaviour
         if (isOneTimeActiveNorAlwaysActive)
         {
             isEnable = false;
+            Debug.Log("ACTIVE ONCE");
             onTrueEvent.Invoke();
         }
         else
