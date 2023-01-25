@@ -53,9 +53,9 @@ TagManager:
   - name: FrontGound
     uniqueID: 4215213469
     locked: 0
-  - name: UI
-    uniqueID: 765683419
-    locked: 0
   - name: Mirror
     uniqueID: 4210818887
+    locked: 0
+  - name: UI
+    uniqueID: 765683419
     locked: 0

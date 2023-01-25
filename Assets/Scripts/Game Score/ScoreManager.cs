@@ -271,13 +271,17 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         }
 
         currentScore = (currentScore + 10) % 10;
+        
+        exchangeSlot1Score = numberGraph[currentScore].exchangeNumber1;
+        exchangeSlot2Score = numberGraph[currentScore].exchangeNumber2;
+        
         UpdateTextGUI();
     }
     
 
     #endregion
 
-    #region Collectible
+    #region Comparator
 
     public bool OnComparatorCalculation(ComparatorType comparatorType, int value)
     {

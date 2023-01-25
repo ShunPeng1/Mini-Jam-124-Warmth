@@ -790,7 +790,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 765683419
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 300
   m_Sprite: {fileID: 168832651, guid: 2b1dad3afd03d5b4b97426c9d5568107, type: 3}
   m_Color: {r: 0.504717, g: 1, b: 0.9266119, a: 0.6862745}
@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 1561622309}
   - component: {fileID: 1561622308}
   - component: {fileID: 1561622307}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13017,6 +13017,10 @@ PrefabInstance:
     - target: {fileID: 2124321591964507259, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460344559716538568, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}
+      propertyPath: originalRotationDegree
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2738053f82e0e154aab7b3d02dca02f9, type: 3}

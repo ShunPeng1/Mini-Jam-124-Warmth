@@ -8,7 +8,7 @@ public class LazerBounce : MonoBehaviour
     private LineRenderer _laser;
 
     private int _count ;
-    private GameObject _lastHitObject = null;
+    private GameObject _lastHitObject;
     
     [SerializeField] private Vector3 positionOffset;
     [SerializeField] private float originalRotationDegree = 0;
@@ -22,7 +22,6 @@ public class LazerBounce : MonoBehaviour
     {
         _laser = GetComponent<LineRenderer>();
         _laser.positionCount = maxBounce;
-        
     }
     private void Update()
     {
@@ -35,7 +34,8 @@ public class LazerBounce : MonoBehaviour
     private void CastLaser(Vector3 position , Vector3 direction)
     {
         _laser.SetPosition(0, transform.position + positionOffset );
-        _lastHitObject = gameObject;
+        
+        _lastHitObject = transform.parent.gameObject;
         
         for (int i=0; i< maxBounce; i++ )
         {
@@ -65,6 +65,8 @@ public class LazerBounce : MonoBehaviour
                     position = hit.point;
                     direction = Vector3.Reflect(direction, hit.normal);
                     _laser.SetPosition(_count, hit.point);
+                    
+                    
                     goto SuccessfullyHit;
                     
                 }

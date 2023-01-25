@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DigitalBar : MonoBehaviour
+public class MirrorBar : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Collider2D _collider2D;
@@ -84,4 +84,10 @@ public class DigitalBar : MonoBehaviour
             lastPosition = transform.position;
         }
     }
+
+    public void LayerHit()
+    {
+        
+    }
+    
 }

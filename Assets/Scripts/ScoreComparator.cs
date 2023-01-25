@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 using static OperatorType;
 
 
@@ -19,8 +20,11 @@ public class ScoreComparator : MonoBehaviour
     [SerializeField] private bool isEnable = true;
     [SerializeField] private bool isPassable = false;
 
+    [Header("Animation")]
     [SerializeField] private Sprite litSprite;
     [SerializeField] private Sprite unlitSprite;
+    [SerializeField] private Light2D light2D;
+    [SerializeField] private float brightenSpeed = 0.1f;
     
     void Start()
     {
@@ -64,15 +68,25 @@ public class ScoreComparator : MonoBehaviour
         if (isOneTimeActiveNorAlwaysActive)
         {
             isEnable = false;
-            Debug.Log("ACTIVE ONCE");
+            //Debug.Log("ACTIVE ONCE");
+            StartCoroutine(nameof(BrightenTheScene));
+
             onTrueEvent.Invoke();
         }
         else
         {
         }
         gameObject.GetComponent<SpriteRenderer>().sprite = litSprite;
-        
-        
-        
+
+
+    }
+
+    private IEnumerator BrightenTheScene()
+    {
+        while (true)
+        {
+            light2D.pointLightOuterRadius += brightenSpeed;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

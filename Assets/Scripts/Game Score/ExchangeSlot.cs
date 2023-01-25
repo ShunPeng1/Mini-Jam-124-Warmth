@@ -18,21 +18,20 @@ public class ExchangeSlot : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not affordable");
+            //Debug.Log("Not affordable");
             OnMouseEnter();
         }
     }
     
     private void OnMouseEnter()
     {
-        Debug.Log("Mouse Enter");
+        //Debug.Log("Mouse Enter");
         ScoreManager.Instance.OnEnterExchangeSlot(slotID);
     }
 
     private void OnMouseExit()
     {
-        
-        Debug.Log("Mouse Exit");
+        //Debug.Log("Mouse Exit");
         ScoreManager.Instance.OnExitExchangeSlot();
     }
 }

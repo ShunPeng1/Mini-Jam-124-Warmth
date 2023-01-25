@@ -22,7 +22,7 @@ public class DigitalBarItemSlot : MonoBehaviour
         spawnedGameObject = ScoreManager.Instance.SpawnBar(digitalBarType, transform.position);
         if (spawnedGameObject != null)
         {
-            spawnedGameObject.GetComponent<DigitalBar>().SpawnInit();
+            spawnedGameObject.GetComponent<MirrorBar>().SpawnInit();
             
         }
         else
@@ -35,7 +35,7 @@ public class DigitalBarItemSlot : MonoBehaviour
     private void OnMouseUp()
     {
         if (spawnedGameObject == null) return;
-        spawnedGameObject.GetComponent<DigitalBar>().DropSpawned();
+        spawnedGameObject.GetComponent<MirrorBar>().DropSpawned();
         spawnedGameObject = null;
     }
 }
