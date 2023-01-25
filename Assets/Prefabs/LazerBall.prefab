@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionOffset: {x: 0, y: 0, z: 0}
   originalRotationDegree: -45
-  maxBounce: 30
+  maxBounce: 100
   collideLayerMask:
     serializedVersion: 2
     m_Bits: 23

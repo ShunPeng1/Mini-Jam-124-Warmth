@@ -472,12 +472,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5535482056809311095, guid: 4fe638780afe0bd4a9bb2e852a8c8912, type: 3}
       propertyPath: m_text
-      value: "Can you do the math with the stars? \n\nThe Score is mod 10 if overflow
-        or under flow"
+      value: DECISION MAKING IS KEY
       objectReference: {fileID: 0}
     - target: {fileID: 5535482056809311095, guid: 4fe638780afe0bd4a9bb2e852a8c8912, type: 3}
       propertyPath: m_fontSize
-      value: 30.85
+      value: 70.45
       objectReference: {fileID: 0}
     - target: {fileID: 6382027364756331941, guid: 4fe638780afe0bd4a9bb2e852a8c8912, type: 3}
       propertyPath: m_Name
